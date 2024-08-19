@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('main-content')
- <!-- DataTales Example -->
+ <!-- مثال DataTales -->
  <div class="card shadow mb-4">
      <div class="row">
          <div class="col-md-12">
@@ -9,8 +9,8 @@
          </div>
      </div>
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary float-left">Post Tag Lists</h6>
-      <a href="{{route('post-tag.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="Add User"><i class="fas fa-plus"></i> Add Post Tag</a>
+      <h6 class="m-0 font-weight-bold text-primary float-left">لیست برچسب‌های پست</h6>
+      <a href="{{route('post-tag.create')}}" class="btn btn-primary btn-sm float-right" data-toggle="tooltip" data-placement="bottom" title="افزودن کاربر"><i class="fas fa-plus"></i> افزودن برچسب پست</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -18,20 +18,20 @@
         <table class="table table-bordered" id="post-category-dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>S.N.</th>
-              <th>Title</th>
-              <th>Slug</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>شماره</th>
+              <th>عنوان</th>
+              <th>نامک</th>
+              <th>وضعیت</th>
+              <th>عملیات</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>S.N.</th>
-              <th>Title</th>
-              <th>Slug</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>شماره</th>
+              <th>عنوان</th>
+              <th>نامک</th>
+              <th>وضعیت</th>
+              <th>عملیات</th>
               </tr>
           </tfoot>
           <tbody>
@@ -48,11 +48,11 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('post-tag.edit',$data->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('post-tag.edit',$data->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="ویرایش" data-placement="bottom"><i class="fas fa-edit"></i></a>
                     <form method="POST" action="{{route('post-tag.destroy',[$data->id])}}">
                       @csrf 
                       @method('delete')
-                          <button class="btn btn-danger btn-sm dltBtn" data-id={{$data->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                          <button class="btn btn-danger btn-sm dltBtn" data-id={{$data->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="حذف"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
                 </tr>  
@@ -61,7 +61,7 @@
         </table>
         <span style="float:right">{{$postTags->links()}}</span>
         @else
-          <h6 class="text-center">No Post Tag found!!! Please create post tag</h6>
+          <h6 class="text-center">هیچ برچسب پستی یافت نشد!!! لطفاً برچسب پست ایجاد کنید</h6>
         @endif
       </div>
     </div>
@@ -80,12 +80,12 @@
 
 @push('scripts')
 
-  <!-- Page level plugins -->
+  <!-- افزونه‌های سطح صفحه -->
   <script src="{{asset('backend/vendor/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-  <!-- Page level custom scripts -->
+  <!-- اسکریپت‌های سفارشی سطح صفحه -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
       
@@ -98,7 +98,7 @@
             ]
         } );
 
-        // Sweet alert
+        // هشدار شیرین
 
         function deleteData(id){
             
@@ -115,10 +115,10 @@
             var form=$(this).closest('form');
               var dataID=$(this).data('id');
               // alert(dataID);
-              e.preventDefault();
+              e.preventف
               swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this data!",
+                    title: "آیا مطمئن هستید؟",
+                    text: "پس از حذف، قادر به بازیابی این داده نخواهید بود!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -127,7 +127,7 @@
                     if (willDelete) {
                        form.submit();
                     } else {
-                        swal("Your data is safe!");
+                        swal("داده‌های شما امن است!");
                     }
                 });
           })

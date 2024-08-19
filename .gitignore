@@ -1,0 +1,32 @@
+# Laravel specific
+/vendor
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/.env
+Homestead.yaml
+Homestead.json
+/.vagrant
+
+# Laravel 5 & 6 specific
+.phpunit.result.cache
+.phpunit.cache
+
+# Laravel 7 & 8 specific
+.phpunit.result.cache
+.phpunit.cache
+.env.testing
+
+# Ignoring IDE specific files
+/.idea
+/.vscode
+
+# Ignoring system files
+.DS_Store
+Thumbs.db
+
+# Ignoring log files and temporary files
+*.log
+*.swp
+*.swo

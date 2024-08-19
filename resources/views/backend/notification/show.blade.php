@@ -1,7 +1,7 @@
 <div id="notifications">
     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
-        <!-- Counter - Alerts -->
+        <!-- شمارنده - اعلان‌ها -->
         <span class="badge badge-danger badge-counter">
             @if(count(Auth::user()->unreadNotifications) >5 )<span data-count="5" class="count">5+</span>
             @else 
@@ -9,10 +9,10 @@
             @endif
         </span>
       </a>
-      <!-- Dropdown - Alerts -->
+      <!-- Dropdown - اعلان‌ها -->
       <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
         <h6 class="dropdown-header">
-          Notifications Center
+          مرکز اعلان‌ها
         </h6>
         @foreach(Auth::user()->unreadNotifications as $notification)
     <a class="dropdown-item d-flex align-items-center" target="_blank" href="{{route('admin.notification',$notification->id)}}">
@@ -33,6 +33,6 @@
             @endif
         @endforeach
 
-        <a class="dropdown-item text-center small text-gray-500" href="{{route('all.notification')}}">Show All Notifications</a>
+        <a class="dropdown-item text-center small text-gray-500" href="{{route('all.notification')}}">نمایش همه اعلان‌ها</a>
       </div>
 </div>

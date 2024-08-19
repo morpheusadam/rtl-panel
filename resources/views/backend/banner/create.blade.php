@@ -1,24 +1,24 @@
 @extends('backend.layouts.master')
 
-@section('title','E-SHOP || Banner Create')
+@section('title','فروشگاه اینترنتی || ایجاد بنر')
 
 @section('main-content')
 
 <div class="card">
-    <h5 class="card-header">Add Banner</h5>
+    <h5 class="card-header">افزودن بنر</h5>
     <div class="card-body">
       <form method="post" action="{{route('banner.store')}}">
         {{csrf_field()}}
         <div class="form-group">
-          <label for="inputTitle" class="col-form-label">Title <span class="text-danger">*</span></label>
-        <input id="inputTitle" type="text" name="title" placeholder="Enter title"  value="{{old('title')}}" class="form-control">
+          <label for="inputTitle" class="col-form-label">عنوان <span class="text-danger">*</span></label>
+        <input id="inputTitle" type="text" name="title" placeholder="عنوان را وارد کنید"  value="{{old('title')}}" class="form-control">
         @error('title')
         <span class="text-danger">{{$message}}</span>
         @enderror
         </div>
 
         <div class="form-group">
-          <label for="inputDesc" class="col-form-label">Description</label>
+          <label for="inputDesc" class="col-form-label">توضیحات</label>
           <textarea class="form-control" id="description" name="description">{{old('description')}}</textarea>
           @error('description')
           <span class="text-danger">{{$message}}</span>
@@ -26,11 +26,11 @@
         </div>
 
         <div class="form-group">
-        <label for="inputPhoto" class="col-form-label">Photo <span class="text-danger">*</span></label>
+        <label for="inputPhoto" class="col-form-label">عکس <span class="text-danger">*</span></label>
         <div class="input-group">
             <span class="input-group-btn">
                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                <i class="fa fa-picture-o"></i> Choose
+                <i class="fa fa-picture-o"></i> انتخاب
                 </a>
             </span>
           <input id="thumbnail" class="form-control" type="text" name="photo" value="{{old('photo')}}">
@@ -42,18 +42,18 @@
         </div>
         
         <div class="form-group">
-          <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
+          <label for="status" class="col-form-label">وضعیت <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="active">فعال</option>
+              <option value="inactive">غیرفعال</option>
           </select>
           @error('status')
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
         <div class="form-group mb-3">
-          <button type="reset" class="btn btn-warning">Reset</button>
-           <button class="btn btn-success" type="submit">Submit</button>
+          <button type="reset" class="btn btn-warning">بازنشانی</button>
+           <button class="btn btn-success" type="submit">ارسال</button>
         </div>
       </form>
     </div>
@@ -72,7 +72,7 @@
 
     $(document).ready(function() {
     $('#description').summernote({
-      placeholder: "Write short description.....",
+      placeholder: "توضیحات کوتاه بنویسید.....",
         tabsize: 2,
         height: 150
     });

@@ -6,17 +6,17 @@
        @include('backend.layouts.notification')
     </div>
   </div>
-  <h5 class="card-header">Messages</h5>
+  <h5 class="card-header">پیام‌ها</h5>
   <div class="card-body">
     @if(count($messages)>0)
     <table class="table message-table" id="message-dataTable">
       <thead>
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
-          <th scope="col">Subject</th>
-          <th scope="col">Date</th>
-          <th scope="col">Action</th>
+          <th scope="col">شناسه</th>
+          <th scope="col">نام</th>
+          <th scope="col">موضوع</th>
+          <th scope="col">تاریخ</th>
+          <th scope="col">عملیات</th>
         </tr>
       </thead>
       <tbody>
@@ -28,11 +28,11 @@
           <td>{{$message->subject}}</td>
           <td>{{$message->created_at->format('F d, Y h:i A')}}</td>
           <td>
-            <a href="{{route('message.show',$message->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
+            <a href="{{route('message.show',$message->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="مشاهده" data-placement="bottom"><i class="fas fa-eye"></i></a>
             <form method="POST" action="{{route('message.destroy',[$message->id])}}">
               @csrf 
               @method('delete')
-                  <button class="btn btn-danger btn-sm dltBtn" data-id={{$message->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                  <button class="btn btn-danger btn-sm dltBtn" data-id={{$message->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="حذف"><i class="fas fa-trash-alt"></i></button>
             </form>
           </td>
         </tr>
@@ -44,7 +44,7 @@
       {{$messages->links()}}
     </nav>
     @else
-      <h2>Messages Empty!</h2>
+      <h2>پیام‌ها خالی است!</h2>
     @endif
   </div>
 </div>
@@ -57,7 +57,7 @@
           display: none;
       }
       .zoom {
-        transition: transform .2s; /* Animation */
+        transition: transform .2s; /* انیمیشن */
       }
 
       .zoom:hover {
@@ -70,7 +70,7 @@
   <script src="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-  <!-- Page level custom scripts -->
+  <!-- اسکریپت‌های سفارشی سطح صفحه -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
       
@@ -83,7 +83,7 @@
             ]
         } );
 
-        // Sweet alert
+        // هشدار شیرین
 
         function deleteData(id){
             
@@ -102,8 +102,8 @@
             // alert(dataID);
             e.preventDefault();
             swal({
-                  title: "Are you sure?",
-                  text: "Once deleted, you will not be able to recover this data!",
+                  title: "آیا مطمئن هستید؟",
+                  text: "پس از حذف، قادر به بازیابی این داده نخواهید بود!",
                   icon: "warning",
                   buttons: true,
                   dangerMode: true,
@@ -112,7 +112,7 @@
                   if (willDelete) {
                     form.submit();
                   } else {
-                      swal("Your data is safe!");
+                      swal("داده‌های شما امن است!");
                   }
               });
         })
